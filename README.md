@@ -1,6 +1,6 @@
-================================================================================
+
 AI-BASED EXTENDED SUDOKU SOLVER
-================================================================================
+
 
 A Constraint Satisfaction Problem (CSP) solver for Extended Sudoku puzzles
 implementing AC-3 constraint propagation, backtracking search with MRV and LCV
@@ -9,9 +9,9 @@ beyond standard Sudoku: Diagonal, Knight's Move, and King's Move restrictions.
 
 Built with Python 3 and Tkinter. No external dependencies required.
 
-================================================================================
+
 TABLE OF CONTENTS
-================================================================================
+
 
   1. Project Overview
   2. Features
@@ -30,9 +30,9 @@ TABLE OF CONTENTS
  15. Known Limitations
  16. Academic Context
 
-================================================================================
+
 1. PROJECT OVERVIEW
-================================================================================
+
 
 This project implements an AI-based solver for an extended version of the
 classical 9x9 Sudoku puzzle. Standard Sudoku requires that every row, every
@@ -60,9 +60,9 @@ applies the following AI techniques in sequence:
   3. LCV value ordering heuristic
   4. Forward checking for early failure detection
 
-================================================================================
+
 2. FEATURES
-================================================================================
+
 
 Solver Features:
   - AC-3 constraint propagation before any search begins
@@ -82,9 +82,9 @@ GUI Features:
   - Three built-in sample puzzles of increasing difficulty
   - Reset and clear buttons for puzzle management
 
-================================================================================
+
 3. FILE STRUCTURE
-================================================================================
+
 
   sudoku_solver.py         Main application file. Contains solver and GUI.
   evaluation_metrics.py    Runs all puzzle/config combinations, saves CSV.
@@ -96,9 +96,9 @@ GUI Features:
   plot_ac3_vs_bt.png       Stacked bar: AC-3 time vs backtracking time.
   README.txt               This file.
 
-================================================================================
+
 4. REQUIREMENTS
-================================================================================
+
 
   Python Version : 3.8 or higher
 
@@ -118,9 +118,9 @@ GUI Features:
   library. matplotlib and numpy are only needed if you wish to regenerate
   the performance plots.
 
-================================================================================
+
 5. INSTALLATION AND SETUP
-================================================================================
+
 
 Step 1: Verify Python version
 
@@ -160,9 +160,9 @@ Step 4: Download or clone the project files
     or
     /home/yourname/sudoku_project/
 
-================================================================================
+
 6. HOW TO RUN
-================================================================================
+
 
 Running the main application:
 
@@ -198,9 +198,9 @@ Running the plot generation script:
   This requires matplotlib and numpy. It will display three plots and save
   them as PNG files in the current directory.
 
-================================================================================
+
 7. HOW TO USE THE GUI
-================================================================================
+
 
 Loading a puzzle:
   The right panel contains three radio buttons labeled Easy, Medium, and Hard.
@@ -244,9 +244,9 @@ Resetting:
   clearing all AI-solved and manually entered values.
   "Clear All" empties every cell including the given clues.
 
-================================================================================
+
 8. CONSTRAINT DESCRIPTIONS
-================================================================================
+
 
 Standard Sudoku Constraints (always active):
   - Each row (9 rows) must contain digits 1-9 with no repetition.
@@ -288,9 +288,9 @@ Effect on Peer Count:
   compared to 20 in standard Sudoku. This significantly increases constraint
   density and reduces domain sizes faster during propagation.
 
-================================================================================
+
 9. AI TECHNIQUES USED
-================================================================================
+
 
 Constraint Satisfaction Problem (CSP) Modeling:
   The puzzle is represented as a triple (X, D, C) where X is the set of 81
@@ -324,9 +324,9 @@ Forward Checking:
   is rejected immediately without recursing deeper. This detects failures one
   step ahead rather than discovering them much later in the search tree.
 
-================================================================================
+
 10. ALGORITHM SUMMARY
-================================================================================
+
 
 SOLVE(grid, constraints):
   1. Initialize domains: empty cells get {1..9}, given cells get {digit}
@@ -360,9 +360,9 @@ AC3(domains):
            queue.append((Xk, Xi))
   3. Return True
 
-================================================================================
+
 11. SAMPLE PUZZLES
-================================================================================
+
 
 Three puzzles are built into the application:
 
@@ -399,9 +399,9 @@ Hard (Knight + King):
         Running it with Standard constraints only will produce a different
         (and likely incorrect for extended rules) result faster.
 
-================================================================================
+
 12. RUNNING THE EVALUATION SCRIPTS
-================================================================================
+
 
 evaluation_metrics.py:
 
@@ -460,9 +460,9 @@ generate_plots.py:
   Run with:
     python generate_plots.py
 
-================================================================================
+
 13. OUTPUT ARTIFACTS
-================================================================================
+
 
 metrics.csv columns:
 
@@ -491,9 +491,9 @@ plot_ac3_vs_bt.png:
   Demonstrates that AC-3 time is roughly constant while backtracking time
   varies dramatically and decreases with stronger constraints.
 
-================================================================================
+
 14. PERFORMANCE BENCHMARKS
-================================================================================
+
 
 All benchmarks were recorded on a standard laptop running Python 3.11.
 
@@ -525,9 +525,9 @@ Key observations:
 
   4. All instances solve in under 20 milliseconds across all configurations.
 
-================================================================================
+
 15. KNOWN LIMITATIONS
-================================================================================
+
 
   1. The solver is designed specifically for 9x9 Sudoku. It does not support
      other grid sizes such as 4x4 or 16x16 variants.
@@ -552,21 +552,10 @@ Key observations:
      be installed separately to run generate_plots.py and evaluation_metrics.py
      if plots are desired.
 
-================================================================================
+
 16. REFERENCES
-================================================================================
 
 
-Techniques demonstrated:
-
-  - Constraint Satisfaction Problem (CSP) modeling
-  - Arc consistency via AC-3
-  - State-space search via backtracking
-  - Variable ordering heuristic: MRV (fail-first)
-  - Value ordering heuristic: LCV (succeed-first)
-  - Inference via forward checking
-  - GUI development with Python Tkinter
-  - Multi-threaded application design
 
 References:
 
@@ -579,6 +568,3 @@ References:
   Norvig, P. (2011). Solving Every Sudoku Puzzle.
   https://norvig.com/sudoku.html
 
-================================================================================
-END OF README
-================================================================================
