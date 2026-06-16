@@ -74,6 +74,7 @@ class SudokuSolver:
                 self.peers[(r, c)] = get_peers(r, c, use_diagonal, use_knight, use_king)
 
     def ac3(self, domains):
+        # Time complexity: O(e * d^3) where e = number of arcs (≈2916 with all constraints active), d = max domain size = 9
         queue = deque()
         for r in range(9):
             for c in range(9):
@@ -107,7 +108,11 @@ class SudokuSolver:
         ]
         if not unassigned:
             return None
-        return min(unassigned, key=lambda cell: len(domains[cell]))
+
+        def degree(cell):
+            return sum(1 for peer in self.peers[cell] if peer not in assignment)
+
+        return min(unassigned, key=lambda cell: (len(domains[cell]), -degree(cell)))
 
     def order_values(self, cell, assignment, domains):
         def count_conflicts(val):
@@ -183,3 +188,55 @@ class SudokuSolver:
             sol[r][c] = val
         self.solution = sol
         return sol
+
+    def count_solutions(self, limit=2):
+        """Count solutions up to `limit`, stopping early once reached.
+
+        Runs as an isolated search — does not touch self.solution/self.steps.
+        """
+        domains = {k: set(v) for k, v in self.domains.items()}
+        if not self.ac3(domains):
+            return 0
+
+        total_unassigned = sum(
+            1 for r in range(9) for c in range(9) if self.grid[r][c] == 0
+        )
+        count = 0
+
+        def backtrack(assignment, domains):
+            nonlocal count
+            if count >= limit:
+                return
+            if len(assignment) == total_unassigned:
+                count += 1
+                return
+
+            cell = self.select_unassigned(assignment, domains)
+            if cell is None:
+                count += 1
+                return
+
+            for val in self.order_values(cell, assignment, domains):
+                if count >= limit:
+                    return
+                consistent = True
+                for peer in self.peers[cell]:
+                    if assignment.get(peer) == val:
+                        consistent = False
+                        break
+                if not consistent:
+                    continue
+
+                new_domains = self.forward_check(domains, cell, val)
+                if new_domains is None:
+                    continue
+
+                assignment[cell] = val
+                backtrack(assignment, new_domains)
+                del assignment[cell]
+
+                if count >= limit:
+                    return
+
+        backtrack({}, domains)
+        return count
