@@ -194,7 +194,7 @@ Below are actual execution metrics gathered across different puzzle levels and c
 | **Hard** | Standard | 210 | 18.4 ms | Backtracking with FC |
 | **Hard** | All Constraints | 61 | 6.3 ms | Backtracking with FC |
 
-### Performance Visualization Placeholders
+### Performance Visualization 
 <img width="3000" height="1800" alt="image" src="https://github.com/user-attachments/assets/50da211f-e564-424d-b3e8-d274417e6a58" />
 
 <img width="3000" height="1800" alt="image" src="https://github.com/user-attachments/assets/6007bb6e-337b-418b-a3ad-487038a61419" />
