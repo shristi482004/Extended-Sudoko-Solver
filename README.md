@@ -24,16 +24,16 @@ The application includes an interactive graphical user interface (GUI) built wit
 This section is reserved for visual walkthroughs of the application interface.
 
 ### Main Solver Dashboard
-*(Add a screenshot of the main application window with an unsolved puzzle loaded)*
-![Main GUI Window](screenshots/gui_main_dashboard.png)
+<img width="852" height="886" alt="image" src="https://github.com/user-attachments/assets/f269e8b3-c81c-4f2c-a98b-09847c8b70d0" />
+
 
 ### Solver in Progress (Animation Mode)
-*(Add a screenshot showing the animation mode in progress with solved cells highlighted in lavender)*
-![Animation Mode](screenshots/gui_solving_animation.png)
+<img width="852" height="886" alt="image" src="https://github.com/user-attachments/assets/df4a6367-bf4d-4cd9-b661-f078731046a7" />
+
 
 ### Error and Conflict Detection
-*(Add a screenshot showing the red error highlights when manual cell inputs conflict)*
-![Conflict Detection](screenshots/gui_conflict_highlight.png)
+<img width="852" height="886" alt="image" src="https://github.com/user-attachments/assets/aff0cd1e-10a8-46e6-ac9f-2fdd8b0dbdb4" />
+
 
 ---
 
@@ -195,9 +195,10 @@ Below are actual execution metrics gathered across different puzzle levels and c
 | **Hard** | All Constraints | 61 | 6.3 ms | Backtracking with FC |
 
 ### Performance Visualization Placeholders
-*(Add charts showing the performance metrics visualized)*
-![Backtracking Nodes Explored](screenshots/plot_nodes.png)
-![Total Execution Time Comparison](screenshots/plot_times.png)
+<img width="3000" height="1800" alt="image" src="https://github.com/user-attachments/assets/50da211f-e564-424d-b3e8-d274417e6a58" />
+
+<img width="3000" height="1800" alt="image" src="https://github.com/user-attachments/assets/6007bb6e-337b-418b-a3ad-487038a61419" />
+
 
 ---
 
