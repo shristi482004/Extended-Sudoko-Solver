@@ -323,6 +323,12 @@ class SudokuApp(tk.Tk):
                         self.cell_state[pr][pc] = "error"
         self._redraw_all()
 
+    PUZZLE_CONSTRAINTS = {
+        "Easy (Standard)":    (False, False, False),
+        "Medium (Diagonal)":  (True,  False, False),
+        "Hard (Knight+King)": (False, True,  True),
+    }
+
     def _load_puzzle(self, name):
         if self.solving:
             return
@@ -336,11 +342,18 @@ class SudokuApp(tk.Tk):
                 if v:
                     self.given.add((r, c))
         self.selected = None
+
+        diag, knight, king = self.PUZZLE_CONSTRAINTS[name]
+        self.var_diag.set(diag)
+        self.var_knight.set(knight)
+        self.var_king.set(king)
+
         self._redraw_all()
         self.status_var.set(f"Loaded: {name} — press ⚡ Solve to run the AI solver.")
         self.stat_nodes.set("Nodes explored: —")
         self.stat_time.set("Time elapsed: —")
         self.stat_steps.set("Steps taken: —")
+        self._check_conflicts()
 
     def _reset(self):
         if self.solving:
